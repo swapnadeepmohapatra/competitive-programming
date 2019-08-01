@@ -1,19 +1,13 @@
-
-def reducefract(n, d):
-    '''Reduces fractions. n is the numerator and d the denominator.'''
-    def gcd(n, d):
-        while d != 0:
-            t = d
-            d = n % d
-            n = t
-        return n
-    assert d != 0, "integer division by zero"
-    assert isinstance(d, int), "must be int"
-    assert isinstance(n, int), "must be int"
-    greatest = gcd(n, d)
-    n /= greatest
-    d /= greatest
-    return n, d
+def hcf(wbc, rbc):
+    return wbc if (rbc == 0) else hcf(rbc, wbc % rbc)
 
 
-print(reducefract(10, 90))
+redC = 5000000
+whiteC = 8000
+
+factor = hcf(redC, whiteC)
+
+whiteR = int(whiteC / factor)
+redR = int(redC / factor)
+
+print('Aspect Ration: ', whiteR, ' : ', redR)
